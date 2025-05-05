@@ -14,10 +14,7 @@ const App = () => {
         <input className='bg-white outline-none w-full py-1 px-3' placeholder='Password' readOnly type="text" value={password} />
         <button className='bg-blue-600 outline-none text-white py-2 shrink-0 px-3'>Copy</button>
       </div>
-      <div>
-        
       </div>
-    </div>
   )
 }
 
