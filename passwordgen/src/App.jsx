@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 const App = () => {
 
@@ -6,6 +6,24 @@ const App = () => {
   const [numbers, setNumbers] = useState(false)
   const [chars, setChars] = useState(false)
   const [password, setPassword] = useState('password123')
+
+  const generatePassword = useCallback(() => {
+    const pass = ''
+    const strs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    if(numbers){
+      strs += '0123456789'
+    }
+    else if(chars){
+      strs += '!@#$%^&*()_+'
+    }
+
+    for(let i=0; i<lengthBar; i++){
+      const randomChar = Math.floor(Math.random() * strs.length + 1) 
+      pass += strs.charAt(randomChar)
+    }
+    setPassword(pass)
+
+  }, [lengthBar,numbers, chars])
 
   return (
     <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500'>
