@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const App = () => {
 
   const [lengthBar, setlengthBar] = useState(10)
-  const [numbers, setlNumbers] = useState(false)
+  const [numbers, setNumbers] = useState(false)
   const [chars, setChars] = useState(false)
   const [password, setPassword] = useState('password123')
 
@@ -19,6 +19,14 @@ const App = () => {
           <input className='cursor-pointer' onChange={(e) => setlengthBar(e.target.value)} type="range" name='' id='' value={lengthBar} min={6} max={20} />
           <label htmlFor="length">Length: {lengthBar}</label>
         </div>
+        <div className='flex items-center gap-x-1'>
+          <input className='cursor-pointer' onChange={() => setNumbers(prev => !prev)} defaultChecked={numbers} type="checkbox" name='' id='' />
+          <label htmlFor="numbers">Numbers</label>
+        </div> 
+        <div className='flex items-center gap-x-1'>
+          <input className='cursor-pointer' onChange={() => setChars(prev => !prev)} defaultChecked={chars} type="checkbox" name='' id='' />
+          <label htmlFor="chars">Characters</label>
+        </div>  
       </div>
       </div>
   )
