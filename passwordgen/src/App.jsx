@@ -9,7 +9,7 @@ const App = () => {
 
   const generatePassword = useCallback(() => {
     let pass = ''
-    const strs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    let strs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     if(numbers){
       strs += '0123456789'
     }
@@ -25,6 +25,10 @@ const App = () => {
 
   }, [lengthBar, numbers, chars])
 
+  function copyPassword(){
+    window.navigator.clipboard.writeText(password)
+  }
+
   useEffect(() => {
     generatePassword()
   }, [lengthBar,numbers, chars])
@@ -34,7 +38,7 @@ const App = () => {
       <h1 className='text-white text-center my-3'>Password Generator</h1>
       <div className='flex shadow rounded-lg overflow-hidden mb-4'>
         <input className='bg-white outline-none w-full py-1 px-3' placeholder='Password' readOnly type="text" value={password} />
-        <button className='bg-blue-600 outline-none cursor-pointer text-white py-2 shrink-0 px-3'>Copy</button>
+        <button onClick={copyPassword} className='bg-blue-600 outline-none cursor-pointer text-white py-2 shrink-0 px-3'>Copy</button>
       </div>
       <div className='flex text-sm gap-x-2'>
         <div className='flex items-center gap-x-1'>
