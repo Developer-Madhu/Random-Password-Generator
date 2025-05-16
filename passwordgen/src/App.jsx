@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 const App = () => {
 
@@ -8,7 +8,7 @@ const App = () => {
   const [password, setPassword] = useState('password123')
 
   const generatePassword = useCallback(() => {
-    const pass = ''
+    let pass = ''
     const strs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     if(numbers){
       strs += '0123456789'
@@ -18,11 +18,15 @@ const App = () => {
     }
 
     for(let i=0; i<lengthBar; i++){
-      const randomChar = Math.floor(Math.random() * strs.length + 1) 
+      let randomChar = Math.floor(Math.random() * strs.length + 1) 
       pass += strs.charAt(randomChar)
     }
     setPassword(pass)
 
+  }, [lengthBar, numbers, chars])
+
+  useEffect(() => {
+    generatePassword()
   }, [lengthBar,numbers, chars])
 
   return (
